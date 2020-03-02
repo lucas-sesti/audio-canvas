@@ -18,13 +18,12 @@ const notes = {
   'G': semitons(calibration, -2),
   'G#': semitons(calibration, -1),
   'A': semitons(calibration, 0),
-  'A#': semitons(440, 1),
-  'B': semitons(440, 2),
+  'A#': semitons(calibration, 1),
+  'B': semitons(calibration, 2),
 };
 
 const ctx: CanvasRenderingContext2D = $canvas.getContext('2d');
 const ctx2: CanvasRenderingContext2D = $canvas2.getContext('2d');
-const colors = ['white', 'red', 'blue', 'green'];
 let frequencyBytes: Uint8Array;
 let audioCtx: AudioContext;
 let analyser: AnalyserNode;
@@ -86,7 +85,7 @@ function waveMap(buffer: AudioBuffer) {
     const steps = $canvas2.width;
     const maxH = $canvas2.height / buffer.numberOfChannels;
 
-    for (let i = 0; i < buffer.numberOfChannels; i++) {
+    for (let i = 0; i < 1; i++) {
       const bytes = buffer.getChannelData(i);
       const pv = p * $canvas2.width;
 
